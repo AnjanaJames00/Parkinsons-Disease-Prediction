@@ -4,3 +4,9 @@ Parkinson’s Disease affects speech patterns due to motor control impairment. T
 
 Instead of testing only one model, this project performs a structured benchmarking study across multiple machine learning algorithms to compare their strengths fairly and scientifically.
 
+🎯 Objective
+Detect Parkinson’s Disease from voice features
+Compare multiple ML models under identical conditions
+Reduce overfitting and improve generalization
+Evaluate models using medical-grade performance metrics
+Identify the most reliable algorithm for this dataset
