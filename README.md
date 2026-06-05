@@ -1,146 +1,191 @@
-# Parkinsons-Disease-Prediction
+# 🧠 Parkinson’s Disease Prediction using Ensemble Learning
 
-Parkinson’s Disease affects speech patterns due to motor control impairment. This project uses biomedical voice measurements such as jitter, shimmer, HNR, and RPDE to classify whether a patient has Parkinson’s Disease.
+## 📌 Overview
 
-Instead of testing only one model, this project performs a structured benchmarking study across multiple machine learning algorithms to compare their strengths fairly and scientifically.
+This project focuses on predicting Parkinson’s Disease using machine learning models trained on biomedical voice measurement data. The goal was not just to achieve high accuracy, but to perform a rigorous benchmarking study comparing multiple algorithms under identical experimental conditions.
 
----
-
-🎯 Objective
-
-Detect Parkinson’s Disease from voice features
-Compare multiple ML models under identical conditions
-Reduce overfitting and improve generalization
-Evaluate models using medical-grade performance metrics
-Identify the most reliable algorithm for this dataset
-
-
-🧠 Models Compared
-Model	Purpose
-Logistic Regression	Linear baseline model
-Decision Tree	Rule-based interpretable model
-Random Forest	Ensemble bagging model
-XGBoost	Gradient boosting model
-LightGBM	Optimized boosting framework
-⚙️ Methodology
-1️⃣ Data Preprocessing
-✔ Missing Value Check
-
-
-Validated dataset quality and ensured no missing records existed.
-
-✔ Patient-Level Aggregation
-
-Multiple recordings from the same patient were averaged together to prevent data leakage and memorization.
-
-✔ Correlation Analysis
-
-Highly correlated features (>0.7 correlation) were removed to reduce redundancy and multicollinearity.
-
-✔ Feature Selection
-
-Used Chi-Square feature selection to retain the top 30 most informative features.
-
-✔ Class Imbalance Handling
-
-Applied Random Oversampling to balance Parkinson’s vs Healthy samples.
+Unlike many ML healthcare projects that report results from a single selected model, this project systematically evaluates multiple ensemble techniques to understand which model truly performs best for this dataset and why.
 
 ---
 
-📊 Exploratory Data Analysis
+# 🎯 Objectives
 
-Performed:
+* Detect Parkinson’s Disease using voice biomarkers
+* Compare multiple machine learning models fairly
+* Reduce overfitting and improve generalization
+* Evaluate models using medical-grade metrics
+* Understand how ensemble learning impacts healthcare prediction tasks
 
-Correlation heatmaps
-Class distribution visualization
-Feature importance analysis
-ROC curve comparison
-Confusion matrix visualization
-🚀 Model Training Pipeline
+---
 
-Each model was trained using:
+# 📂 Dataset
 
-Same train-test split
-Same preprocessing
-Same validation strategy
-Same evaluation metrics
+Dataset Used:
 
-This ensured a fair scientific comparison.
+* Oxford Parkinson’s Disease Detection Dataset
 
-📈 Evaluation Metrics
+The dataset contains biomedical voice measurements extracted from speech recordings.
 
-Medical datasets require more than just accuracy.
+### Key Features
 
-The project evaluated:
+* MDVP Jitter
+* MDVP Shimmer
+* HNR (Harmonics-to-Noise Ratio)
+* RPDE
+* DFA
+* PPE
+* Fundamental Frequency Features
 
-Accuracy
-Precision
-Recall
-F1 Score
-ROC-AUC Score
-Cross-validation accuracy
+### Target
 
-Special focus was placed on Recall because false negatives in medical diagnosis are dangerous.
+* Parkinson’s Disease
+* Healthy Control
 
-🔍 Hyperparameter Tuning
-Random Forest
+---
 
-Used GridSearchCV to optimize:
+# ⚙️ Project Pipeline
 
-Number of trees
-Tree depth
-Minimum split size
-Leaf size
-XGBoost
+## 1️⃣ Data Preprocessing
+
+### ✔ Missing Value Handling
+
+Validated dataset quality and checked for null values.
+
+### ✔ Feature Scaling
+
+Applied `StandardScaler` to normalize feature ranges.
+
+### ✔ Feature Selection
+
+Used correlation analysis and statistical filtering to remove redundant features.
+
+### ✔ Data Balancing
+
+Handled class imbalance using oversampling techniques.
+
+### ✔ Leakage Prevention
+
+Ensured patient-level separation to avoid train-test contamination.
+
+---
+
+# 🧪 Models Compared
+
+| Model               | Type               |
+| ------------------- | ------------------ |
+| Logistic Regression | Linear Baseline    |
+| Random Forest       | Bagging Ensemble   |
+| XGBoost             | Gradient Boosting  |
+| LightGBM            | Leaf-wise Boosting |
+
+---
+
+# 🔬 Experimental Methodology
+
+To ensure scientific fairness:
+
+* Same preprocessing for all models
+* Same train/test split
+* Same cross-validation folds
+* Same hyperparameter tuning effort
+* Same evaluation metrics
+
+This ensured that performance differences came only from the algorithms themselves.
+
+---
+
+# 📊 Evaluation Metrics
+
+The following metrics were used:
+
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC
+* Precision-Recall AUC
+
+### Why Recall Matters
+
+In medical diagnosis, false negatives are dangerous. Missing a Parkinson’s patient is far worse than generating a false alarm, making Recall an especially important metric.
+
+---
+
+# 🚀 Hyperparameter Tuning
+
+## Random Forest
 
 Optimized:
 
-Learning rate
-Max depth
-Subsampling
-Number of estimators
-LightGBM
+* Number of estimators
+* Maximum depth
+* Minimum samples split
 
-Used RandomizedSearchCV for faster tuning across:
+## XGBoost
 
-num_leaves
-max_depth
-regularization
-learning rate
-subsampling
-🧪 Overfitting Analysis
+Optimized:
 
-Compared training accuracy vs validation accuracy for every model.
+* Learning rate
+* Max depth
+* Subsampling
+* Estimators
 
-Key Finding:
-Basic Decision Tree severely overfit the dataset
-Ensemble methods generalized much better
-LightGBM and XGBoost achieved the strongest balance between accuracy and stability
-📊 Results Summary
+## LightGBM
 
-The final comparison showed:
+Optimized:
 
-Ensemble methods significantly outperformed single-tree models
-Boosting models achieved the best ROC-AUC scores
-Random Forest provided strong interpretability
-LightGBM achieved the best speed-performance balance
-🔬 Key Technical Concepts Used
-Ensemble Learning
-Bagging vs Boosting
-Feature Engineering
-Feature Selection
-Cross Validation
-Hyperparameter Optimization
-ROC-AUC Analysis
-Overfitting Detection
-Medical ML Evaluation
-🛠 Tech Stack
-Python
-Scikit-learn
-XGBoost
-LightGBM
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Imbalanced-learn
+* num_leaves
+* learning rate
+* max_depth
+* regularization parameters
+
+---
+
+# 📈 Results
+
+### Key Findings
+
+* Ensemble models outperformed traditional models
+* Boosting algorithms achieved the highest ROC-AUC
+* Random Forest provided strong interpretability
+* LightGBM offered the best speed-performance tradeoff
+
+The project demonstrated how ensemble learning significantly improves robustness and prediction quality in medical ML tasks.
+
+---
+
+# 🔍 Overfitting Analysis
+
+Compared training vs validation performance across all models.
+
+### Observations
+
+* Single Decision Trees heavily overfit
+* Ensemble methods generalized better
+* Boosting models achieved stronger stability across folds
+
+---
+
+# 🛠 Tech Stack
+
+* Python
+* Scikit-learn
+* XGBoost
+* LightGBM
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Imbalanced-learn
+
+
+---
+
+# 💡 Key Learnings
+
+* Importance of fair benchmarking in ML research
+* Difference between bagging and boosting
+* Handling class imbalance in healthcare datasets
+* Preventing data leakage
+* Evaluating medical AI systems beyond simple accuracy
+
