@@ -189,3 +189,8 @@ Compared training vs validation performance across all models.
 * Preventing data leakage
 * Evaluating medical AI systems beyond simple accuracy
 
+Output
+
+<img width="676" height="608" alt="image" src="https://github.com/user-attachments/assets/9927f617-40bd-4610-8431-1461407ab421" />
+<img width="521" height="512" alt="image" src="https://github.com/user-attachments/assets/9476e7fa-c250-4bda-9454-9249ad0800d3" />
+
