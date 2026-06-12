@@ -3,7 +3,6 @@
 ## 📌 Overview
 
 This project focuses on predicting Parkinson’s Disease using machine learning models trained on biomedical voice measurement data. The goal was not just to achieve high accuracy, but to perform a rigorous benchmarking study comparing multiple algorithms under identical experimental conditions.
-
 Unlike many ML healthcare projects that report results from a single selected model, this project systematically evaluates multiple ensemble techniques to understand which model truly performs best for this dataset and why.
 
 ---
